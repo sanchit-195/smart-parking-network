@@ -1,0 +1,24 @@
+# Git ignore for Smart Parking Network
+
+# Maven build outputs
+**/target/
+**/*.class
+
+# IDE and Editor files
+.idea/
+*.iml
+.vscode/
+*.ipr
+*.iws
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Environment variables
+.env
+.env.local
+
+# Logs
+*.log
+

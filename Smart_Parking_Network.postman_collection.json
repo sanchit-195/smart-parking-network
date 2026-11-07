@@ -1,0 +1,221 @@
+{
+  "info": {
+    "name": "Smart Parking Network REST API",
+    "description": "Collection of all REST API requests for Smart Parking Network backend testing.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Parking Slots",
+      "item": [
+        {
+          "name": "1. Get All Slots",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/parking/slots",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "parking", "slots"]
+            }
+          }
+        },
+        {
+          "name": "2. Get Slots by Zone A",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/parking/slots?zone=A",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "parking", "slots"],
+              "query": [{"key": "zone", "value": "A"}]
+            }
+          }
+        },
+        {
+          "name": "3. Get Single Slot (P05)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/parking/slots/P05",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "parking", "slots", "P05"]
+            }
+          }
+        },
+        {
+          "name": "4. Reserve Slot (P05)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/parking/slots/P05/reserve",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "parking", "slots", "P05", "reserve"]
+            }
+          }
+        },
+        {
+          "name": "5. Cancel Reservation (P05)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/parking/slots/P05/cancel-reservation",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "parking", "slots", "P05", "cancel-reservation"]
+            }
+          }
+        },
+        {
+          "name": "6. Release Occupied Slot (P05)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/parking/slots/P05/release",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "parking", "slots", "P05", "release"]
+            }
+          }
+        },
+        {
+          "name": "7. Manually Occupy Slot (P05)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/parking/slots/P05/occupy",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "parking", "slots", "P05", "occupy"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "IoT Sensors",
+      "item": [
+        {
+          "name": "1. Vehicle Entry (8.2 cm)",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"sensorId\": \"S05\",\n  \"slotId\": \"P05\",\n  \"distanceCm\": 8.2\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/sensors/readings",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "sensors", "readings"]
+            }
+          }
+        },
+        {
+          "name": "2. Vehicle Exit (30 cm)",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"sensorId\": \"S05\",\n  \"slotId\": \"P05\",\n  \"distanceCm\": 30.0\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/sensors/readings",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "sensors", "readings"]
+            }
+          }
+        },
+        {
+          "name": "3. Mismatched Sensor (Negative Test)",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"sensorId\": \"S08\",\n  \"slotId\": \"P05\",\n  \"distanceCm\": 8.2\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/sensors/readings",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "sensors", "readings"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Statistics & Events",
+      "item": [
+        {
+          "name": "1. Get Overall Parking Stats",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/parking/stats",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "parking", "stats"]
+            }
+          }
+        },
+        {
+          "name": "2. Get Zone-wise Stats",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/parking/zones",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "parking", "zones"]
+            }
+          }
+        },
+        {
+          "name": "3. Get Recent Events",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/parking/events?limit=20",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "parking", "events"],
+              "query": [{"key": "limit", "value": "20"}]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
+
